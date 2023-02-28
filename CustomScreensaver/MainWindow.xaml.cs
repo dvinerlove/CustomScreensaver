@@ -14,9 +14,11 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAnimatedGif;
 
 namespace CustomScreensaver
 {
@@ -182,6 +184,12 @@ namespace CustomScreensaver
             Dispatcher.Invoke(() =>
             {
                 Time.Text = DateTime.Now.ToShortTimeString();
+                var mp = SendInput.GetMousePosition();
+                var height = SystemParameters.FullPrimaryScreenHeight / ushort.MaxValue;
+                var width = ushort.MaxValue / SystemParameters.FullPrimaryScreenWidth;
+                Debug.WriteLine($"{ushort.MaxValue}");
+                Debug.WriteLine($"{SystemParameters.PrimaryScreenWidth}-{SystemParameters.PrimaryScreenHeight}");
+                Debug.WriteLine($"{width}-{height}");
             });
         }
 
@@ -201,7 +209,21 @@ namespace CustomScreensaver
                 Back.Visibility = Random.Next(10) == 5 ? Visibility.Collapsed : Visibility.Visible;
 
                 var path = System.IO.Path.Combine(AppContext.BaseDirectory, imageFiles[Random.Next(imageFiles.Count)]);
-                Back.Source = new BitmapImage(new Uri(path));
+
+                if (Regex.IsMatch(path, @"\.gif$"))
+                {
+                    var image = new BitmapImage();
+                    image.BeginInit();
+                    image.UriSource = new Uri(path);
+                    image.EndInit();
+                    ImageBehavior.SetAnimatedSource(Back, image);
+                    ImageBehavior.SetRepeatBehavior(Back, RepeatBehavior.Forever);
+                }
+                else
+                {
+                    Back.ClearValue(Image.SourceProperty);
+                    Back.Source = new BitmapImage(new Uri(path));
+                }
             });
         }
 

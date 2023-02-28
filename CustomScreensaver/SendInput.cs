@@ -14,6 +14,16 @@ namespace CustomScreensaver
 {
     public class SendInput
     {
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool GetCursorPos(ref Win32Point pt);
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct Win32Point
+        {
+            public Int32 X;
+            public Int32 Y;
+        };
+
         public static void StopSwitchWindows()
         {
             Task.Factory.StartNew(() =>
@@ -53,13 +63,27 @@ namespace CustomScreensaver
                 Random Random = new Random();
                 for (int i = 0; i < 5; i++)
                 {
-                    double width = SystemParameters.FullPrimaryScreenWidth;
-                    double height = SystemParameters.PrimaryScreenHeight;
-                    var x = (double)Random.Next(ushort.MaxValue);
-                    var y = (double)Random.Next(ushort.MaxValue);
+                    int width = 10;// ushort.MaxValue;
+                    int height = 10;// ushort.MaxValue;
+
+                    var mousePosition = GetMousePosition();
+                    Debug.WriteLine("aaa");
+                    Debug.WriteLine((-2 + (0.5 * Random.Next(0, 10))));
+                    var x = mousePosition.X * 34.1328125 + (-3 + (0.5 * Random.Next(0, 100)));
+                    var y = mousePosition.Y * 60.68055555555556 + (-3 + (0.5 * Random.Next(0, 100)));
+                    //inputSimulator.Mouse.
+                    //Control.MousePosition
+                    //SystemParameters.mouse
                     inputSimulator.Mouse.MoveMouseTo(x, y);
                 }
             });
+        }
+        public static Point GetMousePosition()
+        {
+            var w32Mouse = new Win32Point();
+            GetCursorPos(ref w32Mouse);
+
+            return new Point(w32Mouse.X, w32Mouse.Y);
         }
     }
 }
