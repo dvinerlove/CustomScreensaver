@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace CustomScreensaver
 {
-    internal class HotKeyService
+    public class HotKeyService
     {
         private bool _started;
 
@@ -41,7 +41,7 @@ namespace CustomScreensaver
         {
             Task.Factory.StartNew(() =>
             {
-                while (_started)
+                while (true)
                 {
                     Thread.Sleep(10);
                     for (int i = 0; i < 255; i++)

@@ -1,0 +1,91 @@
+﻿<Window
+    x:Class="CustomScreensaver.SettingsWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:CustomScreensaver"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:CustomScreensaver.Views"
+    Title="SettingsWindow"
+    Width="800"
+    Height="auto"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}"
+    mc:Ignorable="d">
+    <ScrollViewer>
+        <StackPanel Margin="32">
+            <TextBlock Text="{Binding}" />
+            <Viewbox Height="400">
+                <Grid>
+                    <views:ScreensaverView
+                        x:Name="ScreensaverView"
+                        Width="1920"
+                        Height="1080" />
+                </Grid>
+            </Viewbox>
+            <TextBlock Margin="16,16,16,4" Text="BackgroundDarkness" />
+            <Slider
+                Margin="16,0,16,4"
+                Maximum="1"
+                Value="{Binding ScreensaverViewModel.Settings.BackgroundDarkness}" />
+            <Separator />
+            <TextBlock Margin="16,16,16,4" Text="BlurValue" />
+            <Slider
+                Margin="16,0,16,4"
+                Maximum="100"
+                Value="{Binding ScreensaverViewModel.Settings.BlurValue}" />
+            <Separator />
+            <TextBlock Margin="16,16,16,4" Text="ImageOpacity" />
+            <Slider
+                Margin="16,0,16,4"
+                Maximum="1"
+                Value="{Binding ScreensaverViewModel.Settings.ImageOpacity}" />
+            <Separator />
+            <TextBlock Margin="16,16,16,4" Text="DateFontSize" />
+            <Slider
+                Margin="16,0,16,4"
+                Maximum="1000"
+                Value="{Binding ScreensaverViewModel.Settings.DateFontSize}" />
+            <Separator />
+            <TextBlock Margin="16,16,16,4" Text="TimeFontSize" />
+            <Slider
+                Margin="16,0,16,4"
+                Maximum="1000"
+                Value="{Binding ScreensaverViewModel.Settings.TimeFontSize}" />
+            <Separator />
+            <TextBlock Margin="16,16,16,4" Text="TextBlockMargin" />
+            <Slider
+                Margin="16,0,16,4"
+                Maximum="400"
+                Value="{Binding ScreensaverViewModel.Settings.TextBlockMargin}" />
+            <Separator />
+            <TextBlock Margin="16,16,16,4" Text="HorizontalAlignmentItems" />
+            <ComboBox
+                Margin="16,0,16,4"
+                ItemsSource="{Binding ScreensaverViewModel.Settings.HorizontalAlignmentItems}"
+                SelectedItem="{Binding ScreensaverViewModel.Settings.TextBlockHorizontalAlignment}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Separator />
+            <TextBlock Margin="16,16,16,4" Text="VerticalAlignmentItems" />
+            <ComboBox
+                Margin="16,0,16,4"
+                ItemsSource="{Binding ScreensaverViewModel.Settings.VerticalAlignmentItems}"
+                SelectedItem="{Binding ScreensaverViewModel.Settings.TextBlockVerticalAlignment}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Separator />
+            <TextBlock Text="{Binding ScreensaverViewModel}" />
+            <TextBlock Text="{Binding ScreensaverViewModel.Settings}" />
+            <Separator />
+            <Button Command="{Binding ScreensaverViewModel.Settings.SaveCommand}" Content="Save" />
+        </StackPanel>
+    </ScrollViewer>
+</Window>
