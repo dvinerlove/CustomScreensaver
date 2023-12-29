@@ -28,11 +28,11 @@ namespace CustomScreensaver
     public partial class MainWindow : Window
     {
         public ScreensaverService ScreensaverService { get; }
-        public ScreensaverViewModel ScreensaverViewModel { get; }
+        public ScreensaverDisplayFields ScreensaverViewModel { get; }
         public SettingsWindow SettingsWindow { get; }
 
         public MainWindow(ScreensaverService screensaverService,
-                          ScreensaverViewModel screensaverViewModel,
+                          ScreensaverDisplayFields screensaverViewModel,
                           SettingsWindow settingsWindow)
         {
 
@@ -64,33 +64,14 @@ namespace CustomScreensaver
 
         private async void MainWindow_Deactivated(object? sender, EventArgs e)
         {
-            //if (ManualStop == false)
-            //{
-            //    HotKeyService.Stop();
-            //    HideWindow();
-            //    await Task.Delay(100);
-            //    ShowWindow();
-            //    HotKeyService.Start();
-            //}
         }
 
         private void Win32Session_MachineUnlocked(object? sender, EventArgs e)
         {
-            //if (HotKeyService.Started == false)
-            //{
-            //    ManualStop = false;
-            //    HotKeyService.Start();
-            //    ShowWindow();
-            //}
         }
 
         private void Win32Session_MachineLocked(object? sender, EventArgs e)
         {
-            //if (HotKeyService.Started == true)
-            //{
-            //    ManualStop = false;
-            //    HotKeyService.Stop();
-            //}
         }
 
 

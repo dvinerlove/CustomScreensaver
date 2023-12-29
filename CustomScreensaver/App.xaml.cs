@@ -37,9 +37,9 @@ namespace CustomScreensaver
                 // App Host
                 services.AddHostedService<ApplicationHostService>();
                 services.AddSingleton<HotKeyService>();
-                services.AddSingleton<ScreensaverViewModel>();
+                services.AddSingleton<ScreensaverDisplayFields>();
                 services.AddSingleton<ScreensaverService>();
-                services.AddSingleton<SettingsViewModel>();
+                services.AddSingleton<SettingsService>();
 
                 services.AddSingleton<MainWindow>();
                 services.AddSingleton<SettingsWindow>();

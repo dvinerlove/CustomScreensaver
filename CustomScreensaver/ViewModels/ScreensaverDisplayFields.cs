@@ -7,7 +7,7 @@ using System.Windows.Threading;
 namespace CustomScreensaver
 {
 
-    public class ScreensaverViewModel : ViewModelBase
+    public class ScreensaverDisplayFields : ViewModelBase
     {
         #region Property Type:[string] Name:[Date] FieldName:[_date] 
         public string Date
@@ -32,7 +32,7 @@ namespace CustomScreensaver
         private string _time = "";
         #endregion
         #region Property Type:[SettingsViewModel] Name:[settingsViewModel] FieldName:[_settingsViewModel] 
-        public SettingsViewModel Settings
+        public SettingsService Settings
         {
             get => _settingsViewModel; set
             {
@@ -40,9 +40,9 @@ namespace CustomScreensaver
                 OnPropertyChanged(nameof(Settings));
             }
         }
-        private SettingsViewModel _settingsViewModel;
+        private SettingsService _settingsViewModel;
         #endregion
-        public ScreensaverViewModel(SettingsViewModel settingsViewModel)
+        public ScreensaverDisplayFields(SettingsService settingsViewModel)
         {
             Settings = settingsViewModel;
         }

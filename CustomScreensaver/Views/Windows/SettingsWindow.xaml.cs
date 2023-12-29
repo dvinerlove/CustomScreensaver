@@ -21,7 +21,7 @@ namespace CustomScreensaver
     public partial class SettingsWindow : Window
     {
         public SettingsWindow(ScreensaverService screensaverService,
-                              ScreensaverViewModel viewModel)
+                              ScreensaverDisplayFields viewModel)
         {
             ScreensaverViewModel = viewModel;
             _screensaverService = screensaverService;
@@ -40,7 +40,7 @@ namespace CustomScreensaver
             ScreensaverView.Back.Source =_screensaverService.GetScreensaverView().Back.Source;
         }
 
-        public ScreensaverViewModel ScreensaverViewModel { get; }
+        public ScreensaverDisplayFields ScreensaverViewModel { get; }
 
         private ScreensaverService _screensaverService;
     }

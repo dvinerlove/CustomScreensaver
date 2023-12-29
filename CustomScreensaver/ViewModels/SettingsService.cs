@@ -10,9 +10,9 @@ using System.Xml.Serialization;
 
 namespace CustomScreensaver
 {
-    public partial class SettingsViewModel : ViewModelBase
+    public partial class SettingsService : ViewModelBase
     {
-        public SettingsViewModel()
+        public SettingsService()
         {
             HorizontalAlignmentItems = new System.Collections.Generic.List<HorizontalAlignment>() { HorizontalAlignment.Left, HorizontalAlignment.Right, HorizontalAlignment.Center };
             VerticalAlignmentItems = new System.Collections.Generic.List<VerticalAlignment>() { VerticalAlignment.Top, VerticalAlignment.Bottom, VerticalAlignment.Center };
@@ -54,6 +54,7 @@ namespace CustomScreensaver
         {
             TextBlockVisibility = TextBlockVisibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
         }
+
         #region Property Type:[Visibility] Name:[TextBlockVisibility] FieldName:[_textBlockVisibility] 
         public Visibility TextBlockVisibility
         {

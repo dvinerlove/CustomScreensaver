@@ -14,7 +14,6 @@ namespace CustomScreensaver
 {
     public class ScreensaverService
     {
-
         internal HotKeyService HotKeyService { get; }
         public bool ManualStop { get; private set; }
 
@@ -49,11 +48,11 @@ namespace CustomScreensaver
 
         private MainWindow _mainWindow;
         Random Random = new Random();
-        private ScreensaverViewModel _screensaverViewModel;
-        private SettingsViewModel _settingsViewModel;
+        private ScreensaverDisplayFields _screensaverViewModel;
+        private SettingsService _settingsViewModel;
         private List<HotKeyCombination> _hotKeyCombinations = new List<HotKeyCombination>();
         private Image _image;
-        public ScreensaverService(HotKeyService hotKeyService, SettingsViewModel settingsViewModel, ScreensaverViewModel screensaverViewModel)
+        public ScreensaverService(HotKeyService hotKeyService, SettingsService settingsViewModel, ScreensaverDisplayFields screensaverViewModel)
         {
             _screensaverViewModel = screensaverViewModel;
             _settingsViewModel = settingsViewModel;
