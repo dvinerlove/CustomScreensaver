@@ -36,8 +36,12 @@ namespace CustomScreensaver
                 Key.Escape
             };
 
-        private List<Key> breakwindowswitch = new List<Key>() {
+        private List<Key> breakwindowswitch1 = new List<Key>() {
                 Key.LeftAlt,
+                Key.Tab
+            };
+        private List<Key> breakwindowswitch2 = new List<Key>() {
+                Key.LWin,
                 Key.Tab
             };
 
@@ -143,7 +147,8 @@ namespace CustomScreensaver
 
             }
 
-            HotKeyService.SetCombination(breakwindowswitch, BreakSwitch);
+            HotKeyService.SetCombination(breakwindowswitch1, BreakSwitch);
+            HotKeyService.SetCombination(breakwindowswitch2, BreakSwitch);
 
             HotKeyService.Start();
         }

@@ -33,6 +33,10 @@ namespace CustomScreensaver
                 {
                     inputSimulator.Keyboard.Sleep(50);
                     inputSimulator.Keyboard.KeyPress(WindowsInput.Native.VirtualKeyCode.ESCAPE);
+                    inputSimulator.Keyboard.Sleep(50);
+                    inputSimulator.Keyboard.KeyPress(WindowsInput.Native.VirtualKeyCode.ESCAPE);
+                    inputSimulator.Keyboard.Sleep(50);
+                    inputSimulator.Keyboard.KeyPress(WindowsInput.Native.VirtualKeyCode.ESCAPE);
                 }
             });
         }
